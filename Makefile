@@ -1,6 +1,6 @@
 CFLAGS=-Wall	-g
 
-all:	ex13c
+all:	ex13b
 
 clean:
-	rm	-f	ex13c
+	rm	-f	ex13b
