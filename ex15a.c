@@ -55,6 +55,9 @@ int main(int argc, char *argv[])
     for(i = 0; i < 5; i++) {
         printf("%s is %d years old so far.\n", a_names[i], a_ages[i]);
     }
+
+    free(ages);
+    free(names);
        
     return 0;
 }
