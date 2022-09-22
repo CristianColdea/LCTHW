@@ -82,3 +82,28 @@ void Database_close(struct Connection *conn)
         free(conn);
     }
 }
+
+void Database_write(struct Connection *conn)
+{
+    rewind(conn->file);
+
+    int rc = fwrite(conn->db, sizeof(struct Database), 1, conn->file);
+    if (rc != 1)
+        die("Failed to write database.");
+
+    rc = fflush(conn->file);
+    if (rc == -1)
+        die("Cannot flush database.");
+}
+
+void Database_create(struct Connection *conn)
+{
+    int i = 0;
+
+    for (i = 0; i < MAX_ROWS; i++) {
+        // make a prototype to initialize it
+        struct Address addr = {.id = i,.set = 0 };
+        // then just assign it
+        conn->deb->rows[i] = addr;
+    }
+}
