@@ -157,3 +157,18 @@ void Database_list(struct Connection *conn)
         }
     }
 }
+
+int main(int argc, char *argv[])
+{
+    if (argc < 3)
+        die("USAGE: ex17 <dbfile> <action> [action params]");
+
+    char *filename = argv[1];
+    char action = argv[2][0];
+    struct Connection *conn = Database_open(filename, action);
+    int id = 0;
+
+    if (argc > 3) id = atoi(argv[3]);
+    if (id >= MAX_ROWS) die("There's not that many records.");
+
+}
