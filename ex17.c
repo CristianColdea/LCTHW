@@ -171,4 +171,17 @@ int main(int argc, char *argv[])
     if (argc > 3) id = atoi(argv[3]);
     if (id >= MAX_ROWS) die("There's not that many records.");
 
+    switch (action) {
+        case 'c':
+            Database_create(conn);
+            Database_write(conn);
+            break;
+
+        case 'g':
+            if (argc != 4)
+                die("Need an id to get");
+
+            Database_get(conn, id);
+            break;
+    }
 }
