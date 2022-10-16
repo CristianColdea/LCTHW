@@ -183,5 +183,13 @@ int main(int argc, char *argv[])
 
             Database_get(conn, id);
             break;
+
+        case 's':
+            if (arg != 6)
+                die("Need id, name, email to set");
+
+            Database_set(conn, id, argv[4], argv[5]);
+            Database_write(conn);
+            break;
     }
 }
